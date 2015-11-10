@@ -25,3 +25,17 @@
             alert('You need HTML5 compatible browser to see this demo.');
         }
     }
+	
+	function DrawMap() {
+		var NumberOfTiles = 3;
+		// Create all of the canvas elements
+		for (var i = 1; i<=NumberOfTiles; i += 1) {
+			var ID = 'Tile' + i;
+			elem = document.createElement("canvas");
+			elem.id = ID;
+			elem.width = 100;
+			elem.height = 100;
+			document.body.appendChild(elem);
+			DrawTile(ID,i*5+20,50);
+		}
+	}
