@@ -1,6 +1,7 @@
 var TileSize = 60;
 var TileArray = [];
-var NumberArray = [11, 5, 6, 3, 10, 9, 4, 10, 9, 8,12, 11, 4, 8,5, 2, 6, 3];
+var NumberArray = [5,2,6,3,8,10,9,12,11,4,8,10,9,4,5,6,3,11];
+var OrderArray = [14,15,16,17,18,9,7,8,10,11,12,13,4,5,6,1,2,3,0];
 var Desert = {ID:0,Color:"#D6C694",NumberOfTiles:1};
 var Hill = {ID:1,Color:"#BD5515",NumberOfTiles:3};
 var Forest = {ID:2,Color:"#146300",NumberOfTiles:4};
@@ -10,6 +11,11 @@ var Pasture = {ID:5,Color:"#9BD439",NumberOfTiles:4};
 var ResourceArray = [Desert, Hill, Forest, Mountain, Field, Pasture];
 
 function AssignNumbers() {
+	var TempTile = [];
+	for (var i = 0; i < TileArray.length; i += 1) {
+		TempTile[i] = TileArray[OrderArray[i]];
+	}
+	TileArray = TempTile;
 	var index = 0;
 	for (var i = 0; i < TileArray.length; i += 1) {
 		console.log(TileArray[i].Resource.ID);
