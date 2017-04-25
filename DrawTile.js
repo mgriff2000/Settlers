@@ -18,7 +18,7 @@ function AssignNumbers() {
 	TileArray = TempTile;
 	var index = 0;
 	for (var i = 0; i < TileArray.length; i += 1) {
-		console.log(TileArray[i].Resource.ID);
+		//console.log(TileArray[i].Resource.ID);
 		if (TileArray[i].Resource.ID !== 0) {
 			TileArray[i].SetNumber(NumberArray[index]);
 			index += 1;
@@ -47,6 +47,7 @@ function DrawTile(Xcenter,Ycenter,size,ID,color) {
 	var canvas = document.getElementById("CanvasBox");
 	if (canvas.getContext) {
 		var cxt = canvas.getContext('2d');
+		//cxt.save();
 		var numberOfSides = 6;
 		cxt.beginPath();
 		cxt.moveTo (Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0));          
@@ -87,6 +88,7 @@ function DrawMap() {
 	CanvasWidth = canvas.width;
 	cxt.translate(CanvasWidth/2,CanvasHeight/2);
 	TileArray.push(new Tile(0,0,0,7));
+	cxt.save();
 	while (!Done) {
 		
 		// try to populate all of the tiles around the given tile
@@ -119,6 +121,12 @@ function DrawMap() {
 	
 	for (var i = 0; i < TileArray.length; i += 1) {
 		TileArray[i].DrawTile();
+	}
+	
+	document.getElementById("CanvasBox").onclick = function() {
+	var canvas = document.getElementById("CanvasBox");
+	var cxt = canvas.getContext('2d');
+	cxt.restore();
 	}
 }
 function Resource() {
@@ -170,3 +178,4 @@ function Shuffle(array) {
 
   return array;
 }
+
